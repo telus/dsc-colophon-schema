@@ -19,16 +19,21 @@ workflows:
       - node/test:
           name: node-8
           requires: [ node/install ]
-          tag: 8
+          tag: '8'
 
       - node/test:
           name: node-10
           requires: [ node/install ]
-          tag: 10
+          tag: '10'
+
+      - node/test:
+          name: node-12
+          requires: [ node/install ]
+          tag: '12'
 
       - node/release:
           context: semantic-release
-          requires: [ node-8, node-10 ]
+          requires: [ node-8, node-10, node-12 ]
           filters:
             branches:
               only: master
