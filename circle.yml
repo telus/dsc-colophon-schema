@@ -1,86 +1,34 @@
 version: 2.1
 
-executors:
-  builder:
-    docker:
-      - image: ahmadnassri/build-essential
-
-  node-8:
-    docker:
-      - image: node:8-slim
-
-  node-10:
-    docker:
-      - image: node:10-slim
-
-commands:
-  persist:
-    steps:
-      - persist_to_workspace:
-          root: .
-          paths: .
-
-  attach:
-    steps:
-      - attach_workspace:
-          at: .
-
-  install:
-    steps:
-      - run:
-          name: Install dependencies
-          command: npm ci
-
-jobs:
-  build:
-    executor: builder
-    steps:
-      - checkout
-      - install
-      - persist
-
-  lint:
-    executor: builder
-    steps:
-      - attach
-      - run: npm run lint
-
-  test-node-8:
-    executor: node-8
-    steps:
-      - attach
-      - run: npm run test
-
-  test-node-10:
-    executor: node-10
-    steps:
-      - attach
-      - run: npm run test
-
-  release:
-    executor: builder
-    steps:
-      - attach
-      - run: npx semantic-release
+orbs:
+  base: ahmadnassri/base@volatile
+  node: ahmadnassri/node@volatile
 
 workflows:
   version: 2
   main:
     jobs:
-      - build
+      - base/clone
 
-      - lint:
-          requires: [ build ]
+      - node/install:
+          requires: [ base/clone ]
 
-      - test-node-8:
-          requires: [ build ]
+      - node/lint:
+          requires: [ base/clone ]
 
-      - test-node-10:
-          requires: [ build ]
+      - node/test:
+          name: node-8
+          requires: [ node/install ]
+          tag: 8
 
-      - release:
+      - node/test:
+          name: node-10
+          requires: [ node/install ]
+          tag: 10
+
+      - node/release:
           context: semantic-release
-          requires: [ build, lint, test-node-8, test-node-10 ]
+          requires: [ node-8, node-10 ]
           filters:
             branches:
               only: master
