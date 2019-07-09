@@ -12,12 +12,18 @@ action "Execute `npm run lint`" {
   needs = ["Execute `npm ci`"]
   uses = "actions/npm@master"
   args = "run lint"
+  env = {
+    PATH = "./node_modules/.bin:$PATH"
+  }
 }
 
 action "Executes `npm run test`" {
   needs = ["Execute `npm ci`"]
   uses = "actions/npm@master"
   args = "run test"
+  env = {
+    PATH = "./node_modules/.bin:$PATH"
+  }
 }
 
 action "GitHub Action for npm" {
