@@ -14,5 +14,5 @@ for (const version of versions) {
   }
 }
 
-// alias for altest
+// alias for latest
 exports.latest = exports[versions[versions.length - 1]]
