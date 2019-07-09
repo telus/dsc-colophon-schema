@@ -39,6 +39,6 @@ action "Releases only if pushed to master branch" {
 action "Executes `npm run release`" {
   uses = "actions/npm@master"
   needs = ["Releases only if pushed to master branch"]
-  args = "release"
+  args = "run release"
   secrets = ["GITHUB_TOKEN", "NPM_TOKEN"]
 }
