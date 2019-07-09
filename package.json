@@ -3,10 +3,10 @@
   "name": "@colophon/schema",
   "description": "Schema & Validator for https://colophon.id",
   "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
-  "homepage": "https://colophon.id",
+  "homepage": "https://colophon.telus.digital",
   "repository": {
     "type": "git",
-    "url": "https://github.com/project-colophon/schema.git"
+    "url": "https://github.com/telus/dsc-colophon-schema.git"
   },
   "license": "MIT",
   "main": "index.js",
@@ -24,23 +24,35 @@
     "versions.js"
   ],
   "bugs": {
-    "url": "https://github.com/project-colophon/schema/issues"
+    "url": "https://github.com/telus/dsc-colophon-schema/issues"
   },
   "scripts": {
     "lint:audit": "npm audit",
     "lint:deps": "npx updated",
     "lint:ec": "npx editorconfig-checker .",
-    "lint:js": "npx eslint .",
-    "lint:md": "npx remark --quiet --frail .",
-    "lint": "npx run-p lint:*",
+    "lint:js": "eslint .",
+    "lint:md": "npx remark-cli --quiet --frail .",
+    "lint": "run-p lint:*",
     "open:coverage": "opener coverage/lcov-report/index.html",
+    "release:dryrun": "npx semantic-release --dry-run --branch $(git describe --contains --all HEAD)",
+    "release": "npx semantic-release",
     "test": "tap test --100 --coverage-report=lcov --no-browser"
   },
   "dependencies": {
-    "ajv": "^6.9.1",
-    "js-yaml": "^3.12.1"
+    "ajv": "^6.10.1",
+    "js-yaml": "^3.13.1"
   },
   "devDependencies": {
-    "tap": "^14.1.11"
+    "@ahmadnassri/eslint-config": "^1.1.4",
+    "@ahmadnassri/remark-config": "^1.0.2",
+    "@ahmadnassri/semantic-release-config": "^1.0.8",
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "tap": "^14.4.1"
   }
 }
