@@ -23,17 +23,17 @@ action "Executes `npm run test`" {
   args = "run test"
 }
 
-action "GitHub Action for npm" {
+action "Executes `npm run release:dryrun`" {
   uses = "actions/npm@master"
   needs = ["Executes `npm run test`", "Execute `npm run lint`"]
-  runs = "run release:dryrun"
   secrets = ["GITHUB_TOKEN", "NPM_TOKEN"]
+  args = "run release:dryrun"
 }
 
 action "Releases only if pushed to master branch" {
   uses = "actions/bin/filter@master"
-  needs = ["GitHub Action for npm"]
   args = "branch master"
+  needs = ["Executes `npm run release:dryrun`"]
 }
 
 action "Executes `npm run release`" {
