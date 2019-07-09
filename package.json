@@ -1,7 +1,7 @@
 {
   "version": "2.0.3",
-  "name": "@colophon/schema",
-  "description": "Schema & Validator for https://colophon.id",
+  "name": "@telus/colophon-schema",
+  "description": "Fork of Schema & Validator for https://colophon.id",
   "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
   "homepage": "https://colophon.telus.digital",
   "repository": {
