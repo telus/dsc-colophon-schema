@@ -1,6 +1,9 @@
 workflow "Build, test, lint, release" {
+  resolves = [
+    "Execute `npm run lint`",
+    "Executes `npm run release`",
+  ]
   on = "push"
-  resolves = ["Execute `npm run lint`", "GitHub Action for npm-1"]
 }
 
 action "Execute `npm ci`" {
@@ -12,18 +15,12 @@ action "Execute `npm run lint`" {
   needs = ["Execute `npm ci`"]
   uses = "actions/npm@master"
   args = "run lint"
-  env = {
-    PATH = "./node_modules/.bin:$PATH"
-  }
 }
 
 action "Executes `npm run test`" {
   needs = ["Execute `npm ci`"]
   uses = "actions/npm@master"
   args = "run test"
-  env = {
-    PATH = "./node_modules/.bin:$PATH"
-  }
 }
 
 action "GitHub Action for npm" {
@@ -39,7 +36,7 @@ action "Releases only if pushed to master branch" {
   args = "branch master"
 }
 
-action "GitHub Action for npm-1" {
+action "Executes `npm run release`" {
   uses = "actions/npm@master"
   needs = ["Releases only if pushed to master branch"]
   args = "release"
