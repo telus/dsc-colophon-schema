@@ -14,7 +14,7 @@ test('exports all versions', assert => {
 
   for (const number of available) {
     const version = versions[number]
-    assert.true(version.hasOwnProperty('schema'))
+    assert.true(version.schema !== undefined || version.schema !== null)
     assert.type(version.schema, Object)
     assert.type(version.regex, RegExp)
   }

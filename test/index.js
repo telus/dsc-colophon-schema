@@ -34,7 +34,7 @@ test('provides schema errors', assert => {
     description: my app description
   `
 
-  assert.rejects(parser(colophon), { errors: [ { message: "should have required property 'contacts'" } ] })
+  assert.rejects(parser(colophon), { errors: [{ message: "should have required property 'contacts'" }] })
 })
 
 test('valid colophon file with backwards compatibility', assert => {

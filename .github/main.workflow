@@ -1,3 +1,4 @@
+// eslint-disable
 workflow "Build, test, lint, release" {
   on       = "push"
 
