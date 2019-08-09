@@ -10,6 +10,7 @@
 
 | \#                   | status        |
 | -------------------- | ------------- |
+| [`3.0`](schema/3.0/) | **stable**    |
 | [`2.0`](schema/2.0/) | **stable**    |
 |                      |               |
 | [`1.1`](schema/1.1/) | _deprecated_  |
@@ -65,7 +66,7 @@ const parser = require('@colophon/schema')
 
 // invalid
 const invalid = `
-version: 2.0
+version: 2.0 // or version 3.0
 
 id: my-app
 `
