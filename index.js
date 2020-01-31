@@ -25,7 +25,7 @@ module.exports = function parser (data) {
   // load latest and prev to latest version
   // for backwards compatibility
   const { schema } = versions[parseFloat(data.version).toFixed(1)]
-  schema['$async'] = true
+  schema.$async = true
   const validate = ajv.compile(schema)
 
   // validate
