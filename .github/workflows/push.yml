@@ -2,7 +2,6 @@ on: push
 name: Build, test, lint, release
 jobs:
   publish:
-    name: test & publish odi-cli
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
