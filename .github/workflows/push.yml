@@ -1,0 +1,26 @@
+on: push
+name: Build, test, lint, release
+jobs:
+  publish:
+    name: test & publish odi-cli
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        registry-url: https://registry.npmjs.org
+    - run: npm ci 
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - run: npm run test
+    - run: npm run lint
+    - run: npm run release:dryrun
+      if: github.ref == 'master'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - run: npm run release
+      if: github.ref == 'master'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
