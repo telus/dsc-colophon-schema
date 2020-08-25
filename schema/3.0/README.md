@@ -69,12 +69,16 @@ contacts:
     name: Alex
     email: alex@acme.com
 
-  - type: Development Team
-    name: dope jackalope
-    email: dope@acme.com
+  - type: Team
+    name: Platform
+    members_uri: https://github.com/orgs/telus/teams/platform-technology-tools-team/members
+    repositories_uri: https://github.com/orgs/telus/teams/platform-technology-tools-team/repositories
 ```
 
-Each item under `contacts` represents a "Contact Object", you can have as many as you want to describe your application contacts:
+Each item under `contacts` represents a "Contact Object". There are two types of
+Contact Object and you can have as many as you want to describe your application contacts.
+
+#### A person
 
 | name      | type     | required | default | description                  |
 | --------- | -------- | -------- | ------- | ---------------------------- |
@@ -82,7 +86,16 @@ Each item under `contacts` represents a "Contact Object", you can have as many a
 | **name**  | `String` | ✓        | `-`     | name of contact              |
 | **email** | `String` | ✓        | `-`     | email identifier for contact |
 
-**Note**: at least one property is required to be present.
+#### A team
+
+| name                  | type     | required | default | description                  |
+| --------------------- | -------- | -------- | ------- | ---------------------------- |
+| **type**              | `String` | ✗        | `-`     | type of contact              |
+| **name**              | `String` | ✓        | `-`     | name of contact              |
+| **members_uri**       | `String` | ✓        | `-`     | URI to list of team members  |
+| **repositories_uri**  | `String` | ✗        |  `-`    | URI to list of repositories  |
+
+**Note**: at least one contact is required to be present.
 
 ### `schedule`
 
