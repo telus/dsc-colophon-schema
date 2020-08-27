@@ -1,15 +1,18 @@
 {
   "version": "3.0.2",
   "name": "@telus/colophon-schema",
-  "description": "Fork of Schema & Validator for https://colophon.id",
+  "description": "Fork of Schema & Validator for https://telus.colophon.id",
   "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
   "homepage": "https://colophon.telus.digital",
   "repository": {
     "type": "git",
-    "url": "https://github.com/telus/dsc-colophon-schema.git"
+    "url": "https://github.com/telus/telus-colophon-schema.git"
   },
   "license": "MIT",
   "main": "index.js",
+  "bin": {
+    "colophon-validator": "validate.js"
+  },
   "keywords": [
     "colophon",
     "schema"
@@ -24,7 +27,7 @@
     "versions.js"
   ],
   "bugs": {
-    "url": "https://github.com/telus/dsc-colophon-schema/issues"
+    "url": "https://github.com/telus/telus-colophon-schema/issues"
   },
   "scripts": {
     "lint": "standard",
