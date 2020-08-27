@@ -16,21 +16,20 @@ const { argv } = require('yargs')
   .alias('h', 'help')
   .epilog('Copyright 2020')
 
-
-function loadYaml() {
+function loadYaml () {
   try {
     return fs.readFileSync(argv.file, 'utf8')
-  } catch(err) {
+  } catch (err) {
     console.error(`"${argv.file}" doesnt exist!`)
     return process.exit(1)
   }
 }
 
-async function validateSchema(yaml) {
+async function validateSchema (yaml) {
   try {
     await parser(yaml)
     console.log('Colophon validation successful.')
-  } catch(err) {
+  } catch (err) {
     console.error('Colophon validation failed.\n', err.errors)
   }
 }
