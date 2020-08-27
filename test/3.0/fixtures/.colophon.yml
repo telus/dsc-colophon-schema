@@ -27,6 +27,11 @@ contacts:
     name: John Smith
     email: alex@acme.com
 
+  - type: team
+    name: Platform
+    members_uri: https://github.com/orgs/telus/teams/my-team-name
+    repositories_uri: https://github.com/orgs/telus/teams/my-team-name/repositories
+
 schedule:
   launch: 2018-05-24T03:35:40.968Z
   sunset: 2020-01-31T03:35:40.968Z

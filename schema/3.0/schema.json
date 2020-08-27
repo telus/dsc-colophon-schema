@@ -58,7 +58,10 @@
         "type": "object",
         "title": "Contact",
         "description": "team or individual this application belongs to",
-        "required": [ "name", "email" ],
+        "oneOf": [
+          { "required": [ "name", "email" ] },
+          { "required": [ "name", "members_uri" ] }
+        ],
         "properties": {
           "type": {
             "title": "type",
@@ -74,6 +77,16 @@
             "title": "email",
             "description": "Contact Email",
             "format": "email"
+          },
+          "members_uri": {
+            "title": "members_uri",
+            "description": "URI for list of members (usually Github)",
+            "format": "uri"
+          },
+          "repositories_uri": {
+            "title": "repositories_uri",
+            "description": "URI for list of team repositories",
+            "format": "uri"
           }
         }
       }
