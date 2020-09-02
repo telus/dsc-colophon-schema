@@ -1,3 +1,10 @@
+# Update
+
+This project has been migrated to https://github.com/telus/colophon-schema, and will now be read-only.
+
+=============================
+
+
 # Colophon Schema
 
 [![License][license-image]][license-url] [![version][npm-image]][npm-url] [![Build Status][circle-image]][circle-url]
